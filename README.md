@@ -1,5 +1,6 @@
-# Web-Dev-A1
-Web Development 6C Assignment 1
+# Web-Dev-A1 
+Web Development 6C Assignment 1 Task 1
+
 Task 1 Create a landing page utilizing HTML and CSS3.
 Navbar:
 • It should contain a logo and links to all pages.
