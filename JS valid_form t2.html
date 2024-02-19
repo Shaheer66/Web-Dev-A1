@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
+<body>
 <div class="container">
     <div class="header">
         <h2>Sign Up Form</h2>
@@ -13,43 +15,121 @@
 <form class="form" id="form">
     <div class="form-control">
         <label for="form">Username</label>
-        <input type="text" name="" id="username" placeholder="Enter your name">
+        <input type="text" name="" id="username" placeholder="Enter your name" autocomplete="off">
         <i class="fa-solid fa-circle-check"></i>
         <i class="fa-solid fa-circle-exclamation"></i>
         <small>Error Message</small>
     </div>
     <div class="form-control">
         <label for="form">Email</label>
-        <input type="email" name="" id="email" placeholder="Enter your email">
+        <input type="email" name="" id="email" placeholder="Enter your email" autocomplete="off">
         <i class="fa-solid fa-circle-check"></i>
         <i class="fa-solid fa-circle-exclamation"></i>
         <small>Error Message</small>
     </div>
     <div class="form-control">
         <label for="form">Contact Number</label>
-        <input type="number" name="phoneNumber" id="phoneNumber" placeholder="Enter your Phone Number">
+        <input type="number" name="phoneNumber" id="phoneNumber" placeholder="Enter your Phone Number" autocomplete="off">
         <i class="fa-solid fa-circle-check"></i>
         <i class="fa-solid fa-circle-exclamation"></i>
         <small>Error Message</small>
     </div>
     <div class="form-control">
         <label for="form">Password</label>
-        <input type="password" name="password" id="password" placeholder="Create password">
+        <input type="password" name="password" id="password" placeholder="Create password" autocomplete="off">
         <i class="fa-solid fa-circle-check"></i>
         <i class="fa-solid fa-circle-exclamation"></i>
         <small>Error Message</small>
     </div>
     <div class="form-control">
         <label for="form">Confirm Password</label>
-        <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm Password">
+        <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm Password" autocomplete="off">
         <i class="fa-solid fa-circle-check"></i>
         <i class="fa-solid fa-circle-exclamation"></i>
         <small>Error Message</small>
     </div>
-
+    <input type="submit" value="submit" class="button">
 </form>
 </div>
-<body>
-    
+<script type="text/javascript">
+    const form = document.getElementById('form')
+    const username = document.getElementsById('username')
+    const email = document.getElementById('email')
+    const Phone = document.getElementById('phoneNumber')
+    const password = document.getElementById('password')
+    const confirmPassword = document.getElementById('confirmPassword')
+
+    //event
+    form.addEventListener('submit', (event)=>{
+      event.preventDefault();
+      validate();  
+    })
+
+    const isEmail = (emailVal) =>
+    {
+        var atSymbol = emailVal.indexof("@");
+        if(atSymbol<1)
+        {
+            return false;
+        }
+        var dot = emailVal.lastIndexOf('.');
+        if(dot <= atSymbol + 3)//hot mail
+        {
+            return false;
+        }
+        if(dot != emailVal.length - 3)//.com
+        {
+            return false
+        }
+        return true
+    }
+
+    const validate=() =>{
+        const usernameVal=username.value.trim();
+        const emailVal = email.value.trim();
+        const phoneVal = phone.value.trim();
+        const passwordVal = password.value.trim();
+        const confirmPasswordVal = confirmPassword.value.trim();
+        if (usernameVal==="")
+        {
+            steErrormsg(username, 'username cannot be empty');
+        }
+        else if(usernameVal.length <= 2)
+        {
+            steErrormsg(username, 'Username can not be less than 3');
+        }
+        else
+        {
+            setSuccessMsg(usernameVal);
+        }
+
+        if (emailVal==="")
+        {
+            steErrormsg(email, 'Email cannot be empty');
+        }
+        else if(!isEmail(emailVal))
+        {
+            steErrormsg(email, 'Not a valid email');
+        }
+        else
+        {
+            setSuccessMsg(email);
+        }
+    }
+    function steErrormsg(input, errorMsg)
+    {
+           const formControl = input.parentElement; //to select small
+           const small = formControl.querySelector('small');
+           formControl.className = 'form-control error'; //to add error class in html
+           small.innerText = errorMsg;
+
+    }
+
+    function setSuccessMsg(input) {
+        const formControl=
+        
+    }
+
+</script> 
 </body>
 </html>
