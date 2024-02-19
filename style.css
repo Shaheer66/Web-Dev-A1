@@ -48,7 +48,7 @@ body{
 }
 
 .form-control{
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     position: relative;
 }
 
@@ -80,7 +80,7 @@ body{
     border-color: #e74c3c;
 }
 
-.form-control i{
+.form-control i {
     position: absolute;
     right: 12px;
     top: 38px;
